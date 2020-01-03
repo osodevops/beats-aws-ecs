@@ -7,3 +7,10 @@ processors:
       matchers:
         - container_name:
             name: test-nginx
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: [""]
+  # Optional protocol and basic auth credentials.
+  protocol: ""
+  username: ""
+  password: ""
