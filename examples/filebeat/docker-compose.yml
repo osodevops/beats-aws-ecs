@@ -5,11 +5,11 @@ services:
     volumes:
       - "./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro"
       - "nginx-log:/var/log/nginx"
-    command: filebeat -e -d "*" --plugin beats-aws-ecs.so -modules=nginx -E "output.console.pretty=true"
+    command: filebeat -e -d "*" --plugin beats-aws-ecs.so --modules=nginx
 
   nginx:
     container_name: test-nginx
-    image: nginx:alpine
+    image: nginx:stable
     ports:
       - "8080:80"
     command: /bin/sh -c "rm /var/log/nginx/*.log && exec nginx -g 'daemon off;'"
